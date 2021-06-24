@@ -4,6 +4,7 @@ import com.secnium.iast.core.EngineManager;
 import com.secnium.iast.core.handler.EventListenerHandlers;
 import com.secnium.iast.core.handler.controller.TrackerHelper;
 
+import javax.servlet.ServletRequest;
 import java.lang.iast.inject.Injecter;
 
 import static com.secnium.iast.core.util.SandboxReflectUtils.unCaughtGetClassDeclaredJavaMethod;
@@ -66,6 +67,9 @@ public class SpyUtils {
                 unCaughtGetClassDeclaredJavaMethod(EventListenerHandlers.class, "leaveHttp"),
                 unCaughtGetClassDeclaredJavaMethod(EventListenerHandlers.class, "isFirstLevelHttp"),
                 unCaughtGetClassDeclaredJavaMethod(EventListenerHandlers.class, "hasTaintValue")
+                //,
+//                unCaughtGetClassDeclaredJavaMethod(EventListenerHandlers.class, "cloneRequest",
+//                        ServletRequest.class)
         );
 
     }

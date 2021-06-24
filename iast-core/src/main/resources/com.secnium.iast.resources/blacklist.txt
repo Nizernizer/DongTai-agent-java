@@ -27091,6 +27091,7 @@ javax/servlet/ServletRequestAttributeEvent
 javax/servlet/ServletRequestAttributeListener
 javax/servlet/ServletRequestEvent
 javax/servlet/ServletRequestListener
+javax/servlet/ServletRequestWrapper
 javax/servlet/ServletResponse
 javax/servlet/ServletResponseWrapper
 javax/servlet/ServletSecurityElement
@@ -27111,6 +27112,7 @@ javax/servlet/descriptor/TaglibDescriptor
 javax/servlet/http/CookieNameValidator
 javax/servlet/http/MappingMatch
 javax/servlet/http/HttpServletRequest
+javax/servlet/http/HttpServletRequestWrapper
 # redirect hook point
 javax/servlet/http/HttpServletResponse
 javax/servlet/http/HttpServletResponseWrapper
@@ -30313,9 +30315,9 @@ org/apache/catalina/connector/CoyoteAdapter$1
 org/apache/catalina/connector/CoyoteAdapter$CatalinaAfterServiceListener
 org/apache/catalina/connector/CoyoteAdapter$RecycleRequiredException
 org/apache/catalina/connector/CoyoteOutputStream
-#org/apache/catalina/connector/CoyoteInputStream
+org/apache/catalina/connector/CoyoteInputStream
 org/apache/catalina/connector/CoyoteReader
-org/apache/catalina/connector/InputBuffer
+#org/apache/catalina/connector/InputBuffer
 org/apache/catalina/connector/MapperListener
 #org/apache/catalina/connector/OutputBuffer
 org/apache/catalina/connector/OutputBuffer$SessionCookieChecker

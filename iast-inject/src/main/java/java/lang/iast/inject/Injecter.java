@@ -1,5 +1,7 @@
 package java.lang.iast.inject;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -61,6 +63,7 @@ public class Injecter {
                             final Method LEAVE_HTTP,
                             final Method IS_FIRST_LEVEL_HTTP,
                             final Method HAS_TAINT
+//            , final Method CLONE_REQUEST
     ) {
         NAMESPACE_METHOD_HOOK_MAP.put(
                 namespace,
@@ -80,7 +83,8 @@ public class Injecter {
                         ENTER_HTTP,
                         LEAVE_HTTP,
                         IS_FIRST_LEVEL_HTTP,
-                        HAS_TAINT
+                        HAS_TAINT//,
+//                        CLONE_REQUEST
                 )
         );
     }
@@ -453,6 +457,26 @@ public class Injecter {
         return false;
     }
 
+//    public static ServletRequest cloneRequest(final String namespace, ServletRequest request) {
+//        final Thread thread = Thread.currentThread();
+//        if (!selfCallBarrier.isEnter(thread)) {
+//            final SelfCallBarrier.Node node = selfCallBarrier.enter(thread);
+//            try {
+//                final MethodHook hook = NAMESPACE_METHOD_HOOK_MAP.get(namespace);
+//                if (null != hook) {
+//                    return (HttpServletRequest) hook.CLONE_REQUEST.invoke(null, request);
+//                }
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
+//            } finally {
+//                selfCallBarrier.exit(thread, node);
+//            }
+//        }
+//        return request;
+//    }
+
     /**
      * 返回结果
      */
@@ -632,6 +656,7 @@ public class Injecter {
         private final Method LEAVE_HTTP;
         private final Method IS_TOP_LEVEL_HTTP;
         private final Method HAS_TAINT;
+//        private final Method CLONE_REQUEST;
 
         public MethodHook(final Method on_before_method,
                           final Method on_return_method,
@@ -648,7 +673,9 @@ public class Injecter {
                           final Method ENTER_HTTP,
                           final Method LEAVE_HTTP,
                           final Method IS_TOP_LEVEL_HTTP,
-                          final Method HAS_TAINT) {
+                          final Method HAS_TAINT//,
+                          //final Method CLONE_REQUEST
+        ) {
             assert null != on_before_method;
             assert null != on_return_method;
             assert null != on_throws_method;
@@ -668,6 +695,7 @@ public class Injecter {
             this.LEAVE_HTTP = LEAVE_HTTP;
             this.IS_TOP_LEVEL_HTTP = IS_TOP_LEVEL_HTTP;
             this.HAS_TAINT = HAS_TAINT;
+//            this.CLONE_REQUEST = CLONE_REQUEST;
         }
     }
 

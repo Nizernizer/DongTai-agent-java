@@ -11,7 +11,10 @@ import com.secnium.iast.core.handler.models.MethodEvent;
 import com.secnium.iast.core.report.ErrorLogReport;
 import com.secnium.iast.core.util.ThrowableUtils;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.lang.iast.inject.Injecter;
+import java.lang.iast.inject.WrapperRequest;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -216,4 +219,14 @@ public class EventListenerHandlers {
         return false;
     }
 
+    public static ServletRequest cloneRequest(ServletRequest request) {
+        try {
+            if (request instanceof HttpServletRequest) {
+                return new WrapperRequest((HttpServletRequest) request);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return request;
+    }
 }

@@ -89,10 +89,6 @@
                                     <shadedPattern>${shade-prefix}.org.json</shadedPattern>
                                 </relocation>
                                 <relocation>
-                                    <pattern>javax.servlet</pattern>
-                                    <shadedPattern>${shade-prefix}.javax.servlet</shadedPattern>
-                                </relocation>
-                                <relocation>
                                     <pattern>javax.xml.bind</pattern>
                                     <shadedPattern>${shade-prefix}.javax.xml.bind</shadedPattern>
                                 </relocation>
@@ -143,6 +139,7 @@
             <groupId>com.secnium.iast</groupId>
             <artifactId>iast-inject</artifactId>
             <version>${iast.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/be.cyberelf.nanoxml/nanoxml -->
@@ -220,6 +217,13 @@
                     <artifactId>activation</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.4</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
