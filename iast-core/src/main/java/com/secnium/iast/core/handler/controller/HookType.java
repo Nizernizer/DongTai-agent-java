@@ -16,7 +16,8 @@ public enum HookType {
     SOURCE("source", 1),
     PROPAGATOR("propagator", 2),
     SINK("sink", 3),
-    SPRINGAPPLICATION("springApplication", 4);
+    SPRINGAPPLICATION("springApplication", 4),
+    STRUTS2DISPATCHER("struts2Dispatcher", 6);
 
 
     /**

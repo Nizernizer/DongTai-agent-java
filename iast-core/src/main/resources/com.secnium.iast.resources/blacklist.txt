@@ -36522,11 +36522,6 @@ org/apache/struts2/dispatcher/ContainerHolder
 #org/apache/struts2/dispatcher/DefaultActionSupport
 org/apache/struts2/dispatcher/DefaultDispatcherErrorHandler
 org/apache/struts2/dispatcher/DefaultStaticContentLoader
-#org/apache/struts2/dispatcher/Dispatcher
-org/apache/struts2/dispatcher/Dispatcher$1
-org/apache/struts2/dispatcher/Dispatcher$Locator
-org/apache/struts2/dispatcher/DispatcherErrorHandler
-org/apache/struts2/dispatcher/DispatcherListener
 org/apache/struts2/dispatcher/FilterDispatcherCompatWeblogic61
 org/apache/struts2/dispatcher/HttpHeaderResult
 org/apache/struts2/dispatcher/PlainTextResult
