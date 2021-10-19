@@ -1,7 +1,7 @@
 package com.secnium.iast.core.handler;
 
 import com.secnium.iast.core.EngineManager;
-import com.secnium.iast.core.enhance.plugins.api.SpringApplicationImpl;
+import com.secnium.iast.core.enhance.plugins.api.spring.SpringApplicationImpl;
 import com.secnium.iast.core.handler.controller.HookType;
 import com.secnium.iast.core.handler.controller.impl.HttpImpl;
 import com.secnium.iast.core.handler.controller.impl.PropagatorImpl;
@@ -45,8 +45,7 @@ public class EventListenerHandlers {
             }
         }
 
-        // todo Reduce the number of logic calls and improve performance
-        if (hookType == 4) {
+        if (HookType.SPRINGAPPLICATION.equals(hookType)) {
             if (EngineManager.isLingzhiRunning()) {
                 EngineManager.turnOffLingzhi();
             }
