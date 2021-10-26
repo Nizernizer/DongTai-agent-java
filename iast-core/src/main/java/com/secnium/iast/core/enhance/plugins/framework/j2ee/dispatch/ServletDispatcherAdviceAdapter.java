@@ -11,11 +11,9 @@ import org.objectweb.asm.MethodVisitor;
  * @author dongzhiyong@huoxian.cn
  */
 public class ServletDispatcherAdviceAdapter extends AbstractAdviceAdapter {
-    boolean isJakarta;
 
-    public ServletDispatcherAdviceAdapter(MethodVisitor mv, int access, String name, String desc, String signature, IastContext context, boolean isJakarta) {
+    public ServletDispatcherAdviceAdapter(MethodVisitor mv, int access, String name, String desc, String signature, IastContext context) {
         super(mv, access, name, desc, context, "j2ee", signature);
-        this.isJakarta = isJakarta;
     }
 
     @Override
@@ -65,7 +63,6 @@ public class ServletDispatcherAdviceAdapter extends AbstractAdviceAdapter {
     protected void cloneHttpServletRequest() {
         push(context.getNamespace());
         loadArg(0);
-        push(isJakarta);
         invokeStatic(ASM_TYPE_SPY, ASM_METHOD_Spy$cloneRequest);
         storeArg(0);
     }
@@ -77,7 +74,6 @@ public class ServletDispatcherAdviceAdapter extends AbstractAdviceAdapter {
     protected void cloneHttpServletResponse() {
         push(context.getNamespace());
         loadArg(1);
-        push(isJakarta);
         invokeStatic(ASM_TYPE_SPY, ASM_METHOD_Spy$cloneResponse);
         storeArg(1);
     }

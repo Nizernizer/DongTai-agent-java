@@ -5,14 +5,14 @@
 
     <groupId>com.secnium.iast</groupId>
     <artifactId>iast</artifactId>
-    <version>0.6.1</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
 
     <name>dongtai-agent-java</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <iast.version>0.6.1</iast.version>
+        <iast.version>1.0.6</iast.version>
         <shade-prefix>com.secnium.iast.thirdparty</shade-prefix>
 
         <maven.compiler.source>1.6</maven.compiler.source>
@@ -35,12 +35,13 @@
         <guava.version>18.0</guava.version>
         <json.version>20160810</json.version>
         <retrofit.version>1.9.0</retrofit.version>
-        <asm.version>9.0</asm.version>
+        <asm.version>9.2</asm.version>
         <junit.version>4.13.1</junit.version>
         <proguard.version>2.2.0</proguard.version>
         <jdk.version.level>2</jdk.version.level>
         <javax.servlet-api>3.1.0</javax.servlet-api>
         <jakarta.servlet-api>5.0.0</jakarta.servlet-api>
+        <oshi-core.version>3.13.6</oshi-core.version>
     </properties>
 
     <build>
@@ -76,8 +77,8 @@
     <modules>
         <module>iast-agent</module>
         <module>iast-inject</module>
-        <module>iast-servlet</module>
         <module>iast-core</module>
+        <module>iast-servlet</module>
     </modules>
 
     <dependencyManagement>
@@ -103,19 +104,6 @@
     </dependencyManagement>
 
 
-    <description>DongTai IAST Community</description>
-
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>spring</id>-->
-<!--            <url>https://maven.aliyun.com/repository/public</url>-->
-<!--            <releases>-->
-<!--                <enabled>true</enabled>-->
-<!--            </releases>-->
-<!--            <snapshots>-->
-<!--                <enabled>true</enabled>-->
-<!--            </snapshots>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <description>DongTai IAST</description>
 
 </project>

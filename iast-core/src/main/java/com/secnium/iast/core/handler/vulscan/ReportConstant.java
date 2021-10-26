@@ -26,7 +26,7 @@ public class ReportConstant {
     public static final String AGENT_ID = "agentId";
     public static final String PROJECT_NAME = "projectName";
     public static final String AGENT_VERSION = "version";
-    public static final String AGENT_VERSION_VALUE = "v1.0.5";
+    public static final String AGENT_VERSION_VALUE = "v1.0.6";
     public static final String CONTAINER = "container";
 
     public static final String PID = "pid";
@@ -40,6 +40,7 @@ public class ReportConstant {
     public static final String SERVER_PATH = "serverPath";
     public static final String SERVER_ADDR = "serverAddr";
     public static final String SERVER_PORT = "serverPort";
+    public static final String AUTO_CREATE_PROJECT = "autoCreateProject";
     public static final String HOSTNAME = "hostname";
 
     public static final String SCA_PACKAGE_PATH = "packagePath";
@@ -71,7 +72,9 @@ public class ReportConstant {
 
     public static final String VULN_TYPE = "vuln_type";
 
-    public static final String API_DATA = "apiData";
+    public static final String API_DATA = "api_data";
+
+    public static final String STARTUP_TIME = "startupTime";
 
     public static final String REPORT_QUEUE = "reportQueue";
     public static final String METHOD_QUEUE = "methodQueue";

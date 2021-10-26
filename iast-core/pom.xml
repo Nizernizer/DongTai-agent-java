@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.secnium.iast</groupId>
         <artifactId>iast</artifactId>
-        <version>0.6.1</version>
+        <version>1.0.6</version>
     </parent>
     <artifactId>iast-core</artifactId>
     <name>iast-core</name>
@@ -95,6 +95,14 @@
                                 <relocation>
                                     <pattern>javax.xml.stream</pattern>
                                     <shadedPattern>${shade-prefix}.javax.xml.stream</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>oshi</pattern>
+                                    <shadedPattern>${shade-prefix}.oshi</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.sun.jna</pattern>
+                                    <shadedPattern>${shade-prefix}.com.sun.jna</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>

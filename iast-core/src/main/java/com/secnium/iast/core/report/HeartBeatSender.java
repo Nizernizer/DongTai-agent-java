@@ -16,7 +16,7 @@ import java.lang.management.MemoryUsage;
 import java.lang.management.OperatingSystemMXBean;
 
 /**
- * 心跳机制实现，默认30s
+ * 心跳机制实现，默认5s
  *
  * @author dongzhiyong@huoxian.cn
  */

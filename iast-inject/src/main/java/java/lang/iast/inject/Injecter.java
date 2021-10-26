@@ -466,14 +466,14 @@ public class Injecter {
      * @return
      * @throws Throwable
      */
-    public static Object cloneRequest(final String namespace, Object req, boolean isJakarta) throws Throwable {
+    public static Object cloneRequest(final String namespace, Object req) throws Throwable {
         final Thread thread = Thread.currentThread();
         if (!selfCallBarrier.isEnter(thread)) {
             final SelfCallBarrier.Node node = selfCallBarrier.enter(thread);
             try {
                 final MethodHook hook = NAMESPACE_METHOD_HOOK_MAP.get(namespace);
                 if (null != hook) {
-                    return hook.CLONE_REQUEST.invoke(null, req, isJakarta);
+                    return hook.CLONE_REQUEST.invoke(null, req);
                 }
             } catch (Throwable cause) {
                 handleException(cause);
@@ -510,14 +510,14 @@ public class Injecter {
      * @return
      * @throws Throwable
      */
-    public static Object cloneResponse(final String namespace, Object response, boolean isJakarta) throws Throwable {
+    public static Object cloneResponse(final String namespace, Object response) throws Throwable {
         final Thread thread = Thread.currentThread();
         if (!selfCallBarrier.isEnter(thread)) {
             final SelfCallBarrier.Node node = selfCallBarrier.enter(thread);
             try {
                 final MethodHook hook = NAMESPACE_METHOD_HOOK_MAP.get(namespace);
                 if (null != hook) {
-                    return hook.CLONE_RESPONSE.invoke(null, response, isJakarta);
+                    return hook.CLONE_RESPONSE.invoke(null, response);
                 }
             } catch (Throwable cause) {
                 handleException(cause);

@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.secnium.iast</groupId>
         <artifactId>iast</artifactId>
-        <version>0.6.1</version>
+        <version>1.0.6</version>
     </parent>
     <artifactId>iast-agent</artifactId>
     <name>iast-agent</name>
@@ -34,10 +34,17 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>${json.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.oshi</groupId>
+            <artifactId>oshi-core</artifactId>
+            <version>${oshi-core.version}</version>
         </dependency>
     </dependencies>
 

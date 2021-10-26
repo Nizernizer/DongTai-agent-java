@@ -75,7 +75,7 @@ public class HttpImpl {
      * @param req
      * @return
      */
-    public static Object cloneRequest(Object req, boolean isJakarta) {
+    public static Object cloneRequest(Object req) {
 
         try {
             createClassLoader(req);
@@ -96,7 +96,7 @@ public class HttpImpl {
      * @param response
      * @return
      */
-    public static Object cloneResponse(Object response, boolean isJakarta) {
+    public static Object cloneResponse(Object response) {
         try {
             loadCloneResponseMethod();
             return cloneResponseMethod.invoke(null, response);
@@ -139,6 +139,7 @@ public class HttpImpl {
 
     /**
      * 处理http请求
+     * todo Upgrade the current method, support dubbo
      *
      * @param event 待处理的方法调用事件
      */
@@ -151,7 +152,7 @@ public class HttpImpl {
         if (ConfigMatcher.disableExtension((String) requestMeta.get("requestURI"))) {
             return;
         }
-        // todo: add custom header escape
+
         EngineManager.enterHttpEntry(requestMeta);
         if (logger.isDebugEnabled()) {
             logger.debug("HTTP Request:{} {} from: {}", requestMeta.get("method"), requestMeta.get("requestURI"), event.signature);

@@ -1,7 +1,7 @@
 package com.secnium.iast.core.handler;
 
 import com.secnium.iast.core.EngineManager;
-import com.secnium.iast.core.enhance.plugins.api.SpringApplicationImpl;
+import com.secnium.iast.core.enhance.plugins.api.spring.SpringApplicationImpl;
 import com.secnium.iast.core.handler.controller.HookType;
 import com.secnium.iast.core.handler.controller.impl.HttpImpl;
 import com.secnium.iast.core.handler.controller.impl.PropagatorImpl;
@@ -45,19 +45,13 @@ public class EventListenerHandlers {
             }
         }
 
-        // todo Reduce the number of logic calls and improve performance
-        if (hookType == 4) {
-            if (EngineManager.isLingzhiRunning()) {
-                EngineManager.turnOffLingzhi();
-            }
-            MethodEvent event = new MethodEvent(0, -1, javaClassName, matchClassName, javaMethodName, javaMethodDesc, signature, object, argumentArray, retValue, framework, isStatic, null);
-            SpringApplicationImpl.getWebApplicationContext(event, INVOKE_ID_SEQUENCER);
-            EngineManager.turnOnLingzhi();
-        }
-
         if (EngineManager.isLingzhiRunning()) {
             try {
                 EngineManager.turnOffLingzhi();
+                if (HookType.SPRINGAPPLICATION.equals(hookType)) {
+                    MethodEvent event = new MethodEvent(0, -1, javaClassName, matchClassName, javaMethodName, javaMethodDesc, signature, object, argumentArray, retValue, framework, isStatic, null);
+                    SpringApplicationImpl.getWebApplicationContext(event, INVOKE_ID_SEQUENCER);
+                }
                 boolean isEnterHttpEntryPoint = EngineManager.ENTER_HTTP_ENTRYPOINT.isEnterHttp();
                 boolean isHttpEntryMethod = HookType.HTTP.equals(hookType) || HookType.DUBBO.equals(hookType);
                 if (isEnterHttpEntryPoint || isHttpEntryMethod) {
@@ -234,11 +228,10 @@ public class EventListenerHandlers {
      * Wrap the Request object and get the request packet
      *
      * @param req       The instantiated object of HttpServletRequest(Servlet-API、Jakarta-API)
-     * @param isJakarta Whether it is the request object of jakarta-api
      * @return The request object wrapped by RequestWrapper, which can call inputStream/Reader repeatedly
      */
-    public static Object cloneRequest(Object req, boolean isJakarta) {
-        return HttpImpl.cloneRequest(req, isJakarta);
+    public static Object cloneRequest(Object req) {
+        return HttpImpl.cloneRequest(req);
     }
 
     public static boolean isReplayRequest() {
@@ -254,10 +247,9 @@ public class EventListenerHandlers {
      * Wrap the Response object and get the response packet
      *
      * @param response  The instantiated object of HttpServletResponse(Servlet-API、Jakarta-API)
-     * @param isJakarta Whether it is the request object of jakarta-api
      * @return
      */
-    public static Object cloneResponse(Object response, boolean isJakarta) {
-        return HttpImpl.cloneResponse(response, isJakarta);
+    public static Object cloneResponse(Object response) {
+        return HttpImpl.cloneResponse(response);
     }
 }

@@ -21,7 +21,7 @@ public class EngineMonitor implements IMonitor {
 
     @Override
     public void check() {
-        String status =  UpdateUtils.checkForStatus();
+        String status = UpdateUtils.checkForStatus();
         if ("notcmd".equals(status)){
             return;
         }
