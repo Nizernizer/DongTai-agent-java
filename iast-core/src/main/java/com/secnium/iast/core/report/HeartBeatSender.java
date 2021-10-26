@@ -84,10 +84,7 @@ public class HeartBeatSender extends Thread {
             String report = generateHeartBeatMsg();
             StringBuilder response = HttpClientUtils.sendPost(Constants.API_REPORT_UPLOAD, report);
             HttpRequestReplay.sendReplayRequest(response);
-        } catch (IOException e) {
-            logger.error("report error reason: ", e);
-        } catch (Exception e) {
-            logger.error("report error, reason: ", e);
+        } catch (Exception ignored) {
         }
 
         if (isRunning) {
