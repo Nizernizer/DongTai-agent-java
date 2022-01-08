@@ -14,8 +14,3 @@ Release Notes.
 **Contributors**
 
 @Nizernizer, @wayswei and @exexute
-
-
-------------------
-
-Find change logs of all versions [here](changes).
