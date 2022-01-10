@@ -47,9 +47,6 @@ public class EventListenerHandlers {
                 EngineManager.turnOffLingzhi();
 
                 if (HookType.SPRINGAPPLICATION.equals(hookType)) {
-                    MethodEvent event = new MethodEvent(0, -1, javaClassName, matchClassName, javaMethodName,
-                            javaMethodDesc, signature, object, argumentArray, retValue, framework, isStatic, null);
-                    SpringApplicationImpl.getWebApplicationContext(event);
                 } else {
                     boolean isEnterEntryPoint = EngineManager.isEnterHttp() || EngineManager.isFirstLevelDubbo();
                     boolean isEntryPointMethod = HookType.HTTP.equals(hookType) || HookType.DUBBO.equals(hookType);
