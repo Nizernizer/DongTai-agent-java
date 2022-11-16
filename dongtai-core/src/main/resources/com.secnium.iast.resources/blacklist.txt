@@ -8,6 +8,7 @@ com/alibaba/arthas/*
 com/meituan/*
 com/sankuai/*
 com/dianping/*
+org/hotswap/*
 # jrebel
 com/zeroturnaround/*
 # ehcache - cache need't hook

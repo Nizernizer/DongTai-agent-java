@@ -112,6 +112,9 @@ public class IastClassFileTransformer implements ClassFileTransformer {
         if (internalClassName == null || internalClassName.startsWith("io/dongtai/") || internalClassName.startsWith("com/secnium/iast/") || internalClassName.startsWith("java/lang/iast/") || internalClassName.startsWith("cn/huoxian/iast/")) {
             return null;
         }
+        if (null != loader && loader.toString().toLowerCase().contains("rasp")){
+            return null;
+        }
         boolean isRunning = EngineManager.isDongTaiRunning();
         if (isRunning) {
             EngineManager.turnOffDongTai();
@@ -152,11 +155,7 @@ public class IastClassFileTransformer implements ClassFileTransformer {
                     cr.accept(cv, ClassReader.EXPAND_FRAMES);
                     AbstractClassVisitor dumpClassVisitor = (AbstractClassVisitor) cv;
                     if (dumpClassVisitor.hasTransformed()) {
-                        if (null == classBeingRedefined){
-                            transformMap.put(className,srcByteCodeArray);
-                        }else {
-                            transformMap.put(classBeingRedefined,srcByteCodeArray);
-                        }
+                        transformMap.put(className, srcByteCodeArray);
                         transformCount++;
                         return dumpClassIfNecessary(cr.getClassName(), cw.toByteArray(), srcByteCodeArray);
                     }

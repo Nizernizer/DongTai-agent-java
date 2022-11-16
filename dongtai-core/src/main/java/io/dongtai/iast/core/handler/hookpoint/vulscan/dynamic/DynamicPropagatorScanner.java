@@ -58,11 +58,11 @@ public class DynamicPropagatorScanner implements IVulScan {
             }
         }
 
-        for (SinkSafeChecker chk : SAFE_CHECKERS) {
+/*        for (SinkSafeChecker chk : SAFE_CHECKERS) {
             if (chk.match(sink) && chk.isSafe(event, sink)) {
                 return;
             }
-        }
+        }*/
 
         if (sinkSourceHitTaintPool(event, sink)) {
             event.setCallStacks(StackUtils.createCallStack(5));

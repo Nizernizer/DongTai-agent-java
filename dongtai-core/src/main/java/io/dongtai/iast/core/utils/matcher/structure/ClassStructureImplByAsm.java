@@ -306,7 +306,7 @@ public class ClassStructureImplByAsm extends FamilyClassStructure {
             return new PrimitiveClassStructure(primitive);
         }
 
-        final Pair pair = new Pair(loader, javaClassName);
+        Pair pair = new Pair(loader, javaClassName);
         final ClassStructure existClassStructure = classStructureCache.getIfPresent(pair);
         if (null != existClassStructure) {
             return existClassStructure;
@@ -324,6 +324,7 @@ public class ClassStructureImplByAsm extends FamilyClassStructure {
                             cause);
                     classStructureCache.put(pair, null);
                 } finally {
+                    pair = null;
                     IOUtils.closeQuietly(is);
                 }
             }
