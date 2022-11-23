@@ -68,7 +68,7 @@ public class TransformEngine implements IEngine {
         classDefinitionArrayList.toArray(classDefinitions);
         for (ClassDefinition classDefinition:classDefinitionArrayList){
             try {
-                inst.redefineClasses(classDefinition);
+//                inst.redefineClasses(classDefinition);
             }catch (Exception e){
                 DongTaiLog.error(e);
             }
