@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.bytecode.sca;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.ReportKey;
@@ -216,7 +217,7 @@ public class ScaScanner {
                     default:
                         break;
                 }
-                ScaReport.sendReport(this.scaReport.toString());
+                ScaReport.sendReport(JSON.toJSONString(this.scaReport));
             } catch (Throwable ignore) {
             }
         }

@@ -215,7 +215,7 @@ public class AgentRegisterReport {
                     network.add(jsonObject);
                 }
             }
-            return network.toString();
+            return JSON.toJSONString(network);
         } catch (SocketException e) {
             return "{}";
         }
