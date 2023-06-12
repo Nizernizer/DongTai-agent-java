@@ -1,5 +1,6 @@
 package io.dongtai.iast.agent.report;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.agent.monitor.impl.PerformanceMonitor;
 import io.dongtai.iast.agent.util.ByteUtils;
@@ -29,7 +30,7 @@ public class HeartBeatReport {
         // do not fetch replay request
         detail.put(ReportKey.RETURN_QUEUE, 0);
 
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
     public static String generateAgentActualActionMsg(AgentState agentState) {
@@ -69,7 +70,7 @@ public class HeartBeatReport {
         memoryReport.put("total", ByteUtils.formatByteSize(total));
         memoryReport.put("use", ByteUtils.formatByteSize(use));
         memoryReport.put("rate", (int) rate);
-        return memoryReport.toString();
+        return JSON.toJSONString(memoryReport);
     }
 
     /**

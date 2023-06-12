@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.service;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.ApiPath;
 import io.dongtai.iast.common.constants.ReportKey;
@@ -28,7 +29,7 @@ public class ServerAddressReport implements Runnable {
         report.put("serverAddr", this.serverAddr);
         report.put("serverPort", this.serverPort);
         report.put("protocol", this.protocol);
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.handler.hookpoint.service;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
 import io.dongtai.iast.core.EngineManager;
@@ -69,6 +70,6 @@ public class ServiceHandler {
         srvList.add(srv);
         detail.put("serviceData", srvList);
 
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 }

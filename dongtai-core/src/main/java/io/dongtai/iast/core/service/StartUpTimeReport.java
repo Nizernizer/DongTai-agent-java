@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.service;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.ApiPath;
 import io.dongtai.iast.common.constants.ReportKey;
@@ -14,6 +15,6 @@ public class StartUpTimeReport {
         report.put(ReportKey.AGENT_ID, id);
         report.put("startupTime", startUpTime);
 
-        ThreadPools.sendReport(ApiPath.STARTUP_TIME, report.toString());
+        ThreadPools.sendReport(ApiPath.STARTUP_TIME, JSON.toJSONString(report));
     }
 }

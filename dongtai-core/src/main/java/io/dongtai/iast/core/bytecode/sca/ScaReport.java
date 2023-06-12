@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.bytecode.sca;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
 import io.dongtai.iast.core.EngineManager;
@@ -45,7 +46,7 @@ public class ScaReport {
         detail.put(KEY_SCA_PACKAGE_SIGNATURE, signature);
         detail.put(KEY_SCA_PACKAGE_ALGORITHM, algorithm);
 
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
 }

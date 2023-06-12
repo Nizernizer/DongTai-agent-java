@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.service;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
 import io.dongtai.iast.core.EngineManager;
@@ -27,7 +28,7 @@ public class AgentQueueReport implements Runnable {
         detail.put(ReportKey.IS_CORE_RUNNING, EngineManager.isEngineRunning() ? 1 : 0);
         detail.put(ReportKey.RETURN_QUEUE, 1);
 
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
     @Override

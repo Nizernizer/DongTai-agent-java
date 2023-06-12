@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.service;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
 import io.dongtai.iast.core.EngineManager;
@@ -35,7 +36,7 @@ public class ServiceDirReport {
         detail.put("serviceDir", this.serviceDir);
         detail.put("serviceType", this.serviceType);
 
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
     public void send() {

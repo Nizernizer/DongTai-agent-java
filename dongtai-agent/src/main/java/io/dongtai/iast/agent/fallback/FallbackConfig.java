@@ -1,5 +1,6 @@
 package io.dongtai.iast.agent.fallback;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.google.gson.reflect.TypeToken;
 import io.dongtai.iast.agent.IastProperties;
@@ -101,7 +102,7 @@ public class FallbackConfig {
         JSONObject report = new JSONObject();
         report.put(KEY_AGENT_ID, agentId);
         try {
-            StringBuilder response = HttpClientUtils.sendPost(ApiPath.SERVER_CONFIG_V2, report.toString());
+            StringBuilder response = HttpClientUtils.sendPost(ApiPath.SERVER_CONFIG_V2, JSON.toJSONString(report));
             return response.toString();
         } catch (Throwable t) {
             return REMOTE_CONFIG_DEFAULT_META;

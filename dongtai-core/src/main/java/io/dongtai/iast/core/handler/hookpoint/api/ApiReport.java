@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.handler.hookpoint.api;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
 import io.dongtai.iast.core.EngineManager;
@@ -27,7 +28,7 @@ public class ApiReport {
         detail.put(ReportKey.AGENT_ID, EngineManager.getAgentId());
         JSONObject apiListJson = new JSONObject(apiList);
         detail.put(ReportKey.API_DATA, apiListJson.get(ReportKey.API_DATA));
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
 }

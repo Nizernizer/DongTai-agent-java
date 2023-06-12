@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.handler.hookpoint.graphy;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
@@ -97,7 +98,7 @@ public class GraphBuilder {
             methodPool.add(toJson(event));
         }
 
-        return report.toString();
+        return JSON.toJSONString(report);
     }
 
     public static JSONObject toJson(MethodEvent event) {

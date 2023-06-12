@@ -1,5 +1,6 @@
 package io.dongtai.iast.core.handler.hookpoint.vulscan.normal;
 
+import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import io.dongtai.iast.common.constants.*;
@@ -53,7 +54,7 @@ public abstract class AbstractNormalVulScan implements IVulScan {
         for (StackTraceElement element : stacks) {
             vulStacks.add(element.toString());
         }
-        ThreadPools.sendPriorityReport(ApiPath.REPORT_UPLOAD, report.toString());
+        ThreadPools.sendPriorityReport(ApiPath.REPORT_UPLOAD, JSON.toJSONString(report));
     }
 
     protected StackTraceElement[] getLatestStack() {
